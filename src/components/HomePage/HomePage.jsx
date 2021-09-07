@@ -1,23 +1,20 @@
 import ApiFetch from "../API/ApiFetch";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import s from "../HomePage/HomePage.module.css";
 
 export default function HomePage() {
   const [movieStart, setMovieStart] = useState([]);
-  // const [page, setPage] = useState(1);
   const [error, setError] = useState(null);
 
-  ApiFetch()
-    .then((moviesData) => {
-      console.log(moviesData.results);
-      setMovieStart((movieStart) =>
-        movieStart ? [...movieStart, ...moviesData.results] : moviesData.results
-      );
-    })
-    .catch((error) => setError(error));
-
-  console.log(error);
+  useEffect(() => {
+    ApiFetch()
+      .then((moviesData) => {
+        console.log(moviesData.results);
+        setMovieStart(moviesData.results);
+      })
+      .catch((error) => setError(error));
+  }, []);
 
   return (
     <div>
@@ -36,6 +33,7 @@ export default function HomePage() {
                   alt={el.title}
                 />
                 <p>{el.title}</p>
+                <span className={s.item_rang}>{el.vote_average}</span>
               </Link>
             </li>
           );
@@ -44,18 +42,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-// ((imgDataFetch) => {
-//   console.log(imgDataFetch);
-//   console.log(page);
-//   setPage(page + 1);
-//   setImgData((imgData) =>
-//     imgData ? [...imgData, ...imgDataFetch.hits] : imgDataFetch.hits
-//   );
-//   setLoading(false);
-// window.scrollTo({
-//   top: document.documentElement.scrollHeight,
-//   behavior: "smooth",
-// });
-// })
-//   .catch((error) => setError(error));
