@@ -1,3 +1,9 @@
+import InputSearch from "../InputSearch/InputSearch";
+
 export default function MoviesPage() {
-  return <div>222</div>;
+  return (
+    <div>
+      <InputSearch />
+    </div>
+  );
 }

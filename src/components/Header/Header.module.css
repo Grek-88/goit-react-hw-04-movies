@@ -1,16 +1,16 @@
-.header{
-  background-color: #E7D7F7;
-  box-shadow: -1px 5px 5px 0px rgba(0,0,0,0.3);
-  -webkit-box-shadow: -1px 5px 5px 0px rgba(0,0,0,0.3);
-  -moz-box-shadow: -1px 5px 5px 0px rgba(0,0,0,0.3);
+.header {
+  background-color: #b9b7b4;
+  box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: -1px 5px 5px 0px rgba(0, 0, 0, 0.3);
 }
-.nav{
+.nav {
   list-style: none;
   display: flex;
   margin: 0;
-  }
+}
 
-.nav_item{
+.nav_item {
   margin: 15px;
 }
 a {
@@ -18,8 +18,7 @@ a {
   text-decoration: none;
 }
 
-
-.active{
-    color: #408cff;
-    font-weight: 500;
+.active {
+  color: #408cff;
+  font-weight: 500;
 }
