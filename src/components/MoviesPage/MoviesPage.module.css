@@ -1,0 +1,43 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list_item {
+  position: relative;
+  width: 250px;
+  height: auto;
+  list-style: none;
+  margin: 10px;
+}
+
+.list_item:hover {
+  color: #408cff;
+  opacity: 0.8;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.list_item:hover p {
+  font-weight: 500;
+  color: #408cff;
+}
+
+.list_item img {
+  display: block;
+  width: 250px;
+  height: 368px;
+  border-radius: 5px;
+}
+
+p {
+  text-align: center;
+}
+
+.item_rang {
+  background: #408cff;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+}

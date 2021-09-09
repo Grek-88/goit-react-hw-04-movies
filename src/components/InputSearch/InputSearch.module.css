@@ -39,7 +39,7 @@
   top: -2px;
   right: 0;
 }
-.InputSearch button:before {
+.SearchForm button:before {
   content: "\f002";
   font-family: FontAwesome;
   color: #408cff;

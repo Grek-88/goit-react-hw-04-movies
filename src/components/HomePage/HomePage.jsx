@@ -14,12 +14,15 @@ export default function HomePage() {
     setLoader(true);
     ApiFetch()
       .then((moviesData) => {
-        console.log(moviesData.results);
-        setMovieStart(moviesData.results);
+        // console.log(moviesData.results);
+        setMovieStart([...moviesData.results]);
         setLoader(false);
       })
       .catch((error) => setError(error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // console.log(error);
 
   return (
     <div>
@@ -34,7 +37,7 @@ export default function HomePage() {
             <li key={el.id} className={s.list_item}>
               <Link
                 to={{
-                  pathname: `/${el.id}`,
+                  pathname: `/movies/${el.id}`,
                   state: { from: "/home" },
                 }}
               >
