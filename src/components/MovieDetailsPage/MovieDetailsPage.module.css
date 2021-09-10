@@ -1,0 +1,107 @@
+.article {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .article {
+    display: flex;
+  }
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.score {
+  margin-bottom: 20px;
+  text-align: start;
+}
+
+.vote {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  padding: 10px;
+  border-radius: 5px;
+
+  color: #ffffff;
+  background-color: #408cff;
+}
+
+.overview {
+  margin-bottom: 20px;
+  text-align: start;
+}
+.overview span {
+  margin-left: 100%;
+}
+.overview p {
+  text-align: start;
+}
+
+.thumb {
+  margin: 20px;
+}
+@media screen and (min-width: 768px) {
+  .thumb {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+}
+
+.poster {
+  height: auto;
+  border-radius: 5px;
+}
+@media screen and (min-width: 768px) {
+  .poster {
+    max-width: 300px;
+  }
+}
+
+.label {
+  margin-right: 5px;
+}
+
+.genresList {
+  margin-top: 10px;
+}
+
+.genresItem:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.genresItem::before {
+  content: "\f0a4";
+  font-family: FontAwesome;
+  margin-right: 10px;
+
+  color: #408cff;
+}
+
+.addition {
+  margin-left: 20px;
+}
+
+.addition_item > a {
+  text-decoration: underline;
+}
+
+.addition_item::before {
+  content: "\f0a4";
+  font-family: FontAwesome;
+  margin-right: 10px;
+
+  color: #408cff;
+}
+.active {
+  color: #408cff;
+  font-weight: 500;
+}
+
+.buttonMod {
+  margin-left: 20px;
+  margin-top: 18px;
+  margin-bottom: -5px;
+}

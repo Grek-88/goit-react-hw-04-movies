@@ -8,7 +8,7 @@ export default function Footer() {
         borderTop: "1px double #000",
       }}
     >
-      <p>© goit-react-hw-04-movies 09/2021</p>
+      <p>© Georgy-react-hw-04-movies 09/2021</p>
     </footer>
   );
 }

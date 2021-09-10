@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.list_item {
+  margin: 5px;
+  width: 200px;
+}
+
+.list_item img {
+  min-width: 200px;
+  min-height: 300px;
+}

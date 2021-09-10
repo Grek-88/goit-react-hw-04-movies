@@ -1,4 +1,4 @@
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import MoviesPage from "./components/MoviesPage/MoviesPage";
@@ -13,7 +13,7 @@ export default function App() {
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/movies" exact component={MoviesPage} />
-        <Route path="/movies/:movieId" component={MovieDetailsPage} />
+        <Route path="/movies/:movieId" exact component={MovieDetailsPage} />
         {/* <Redirect to="/" /> */}
       </Switch>
       <Footer />

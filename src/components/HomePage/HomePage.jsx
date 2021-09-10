@@ -22,12 +22,12 @@ export default function HomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // console.log(error);
+  console.log(error);
 
   return (
     <div>
       {loader && (
-        <div style={{ margin: "50%" }}>
+        <div style={{ marginLeft: "50%", marginTop: "20px" }}>
           <Spiner />
         </div>
       )}
@@ -38,7 +38,7 @@ export default function HomePage() {
               <Link
                 to={{
                   pathname: `/movies/${el.id}`,
-                  state: { from: "/home" },
+                  state: { from: "/" },
                 }}
               >
                 <img

@@ -1,0 +1,4 @@
+ul > p,
+ul > li > p {
+  text-align: start;
+}
