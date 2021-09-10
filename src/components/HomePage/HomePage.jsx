@@ -22,7 +22,7 @@ export default function HomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(error);
+  error && console.log(error);
 
   return (
     <div>

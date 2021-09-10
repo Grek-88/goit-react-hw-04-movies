@@ -1,16 +1,32 @@
 import { useEffect, useState } from "react";
 import BaseImg from "../../img/baseImg.jpg";
+
+import {
+  NavLink,
+  Link,
+  Route,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 import Cast from "../Cast/Cast";
 import Reviews from "../Reviews/Reviews";
 import s from "../MovieDetailsPage/MovieDetailsPage.module.css";
-import { NavLink, Route } from "react-router-dom";
 import Spiner from "../Loader/Loader";
-// import Button from "../Button/Button";
-// import MoviesPage from "../MoviesPage/MoviesPage";
+import Button from "../Button/Button";
+import MoviesPage from "../MoviesPage/MoviesPage";
+const queryString = require("query-string");
 
 export default function MovieDetailsPage(props) {
   const [movieDetails, setMovieDetails] = useState(null);
   const [loader, setLoader] = useState(false);
+  const history = useHistory();
+  const location = useLocation();
+  const [queryBack, setQueryBack] = useState(null);
+  console.log("history", history);
+  console.log("location", location);
+  let parsed = queryString.parse(location.search);
+  console.log("parsed2", parsed);
+
   useEffect(() => {
     setLoader(true);
     fetch(
@@ -30,35 +46,37 @@ export default function MovieDetailsPage(props) {
         setMovieDetails(movieData);
         setLoader(false);
       });
-  }, [props.match.params.movieId]);
+  }, []);
 
-  // let queryBack = null;
+  const goBack = () => {
+    console.log(props);
+    if (!location.state || location?.state?.from === "/") {
+      history.push({ pathname: "/" });
+    }
 
-  // const goBack = () => {
-  //   console.log(props);
-  //   if (!props.location.state || props.location?.state?.from === "/") {
-  //     props.history.push({ pathname: "/" });
-  //   }
+    if (
+      location?.state?.from === "/movies" ||
+      location?.pathname === `${props.match.url}/cast` ||
+      location?.pathname === `${props.match.url}/reviews`
+    ) {
+      // setQueryBack(props.location.state.search);
+      history.push({
+        pathname: "/movies",
+        search: `?query=${location.state.search}`,
+        // pathname: `/movies/?query=${location.state.search}`,
+      });
+    }
 
-  //   if (props.location?.state?.from === "/movies") {
-  //     // queryBack = props.location.state.search;
-  //     props.history.push({
-  //       pathname: "/movies",
-  //       // pathname: `${props.location.state.from}/?query=${props.location.state.search}`,
-  //     });
-  //   }
-  //   // return queryBack;
+    //   // props.location?.state?.from
+    //   //   ? props.history.push({
+    //   //       pathname: `${props.location.state.from}/?query=${props.location.state.search}`,
+    //   //     })
+    //   //   : props.history.push({ pathname: "/" });
 
-  //   // props.location?.state?.from
-  //   //   ? props.history.push({
-  //   //       pathname: `${props.location.state.from}/?query=${props.location.state.search}`,
-  //   //     })
-  //   //   : props.history.push({ pathname: "/" });
+    //   // props.history.push(props?.location?.state?.from ?? "/");
+  };
 
-  //   // props.history.push(props?.location?.state?.from ?? "/");
-  // };
-
-  // console.log("queryBack", queryBack);
+  console.log("queryBack", queryBack);
   // if (props.location?.state?.from === "/movies") {
   //   queryBack = props.location.state.search;
   // }
@@ -70,7 +88,7 @@ export default function MovieDetailsPage(props) {
           <Spiner />
         </div>
       )}
-      {/* <Button text={"Go back"} classMode={s.buttonMod} onClick={goBack} /> */}
+      <Button text={"Go back"} classMode={s.buttonMod} onClick={goBack} />
       {movieDetails && (
         <>
           <article className={s.article}>
@@ -141,7 +159,13 @@ export default function MovieDetailsPage(props) {
           <ul>
             <li className={s.addition_item}>
               <NavLink
-                to={`${props.match.url}/cast`}
+                to={{
+                  pathname: `${props.match.url}/cast`,
+                  state: {
+                    from: "/movies",
+                    search: `${location.state.search}`,
+                  },
+                }}
                 activeClassName={s.active}
               >
                 Cast
@@ -149,7 +173,13 @@ export default function MovieDetailsPage(props) {
             </li>
             <li className={s.addition_item}>
               <NavLink
-                to={`${props.match.url}/reviews`}
+                to={{
+                  pathname: `${props.match.url}/reviews`,
+                  state: {
+                    from: "/movies",
+                    search: `${location.state.search}`,
+                  },
+                }}
                 activeClassName={s.active}
               >
                 Reviews
@@ -157,13 +187,9 @@ export default function MovieDetailsPage(props) {
             </li>
           </ul>
 
-          <Route path={`${props.match.url}/cast`} component={Cast} />
+          <Route path={`${props.match.url}/cast`} exact component={Cast} />
           <Route path={`${props.match.url}/reviews`} component={Reviews} />
-          {/* <Route
-            path={`/movies/?query=${queryBack}`}
-            exact
-            component={MoviesPage}
-          /> */}
+          {/* {location.search === `?query=${queryBack}` && <MoviesPage />} */}
         </>
       )}
     </div>

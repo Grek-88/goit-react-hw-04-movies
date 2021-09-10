@@ -13,8 +13,7 @@ export default function App() {
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/movies" exact component={MoviesPage} />
-        <Route path="/movies/:movieId" exact component={MovieDetailsPage} />
-        {/* <Redirect to="/" /> */}
+        <Route path="/movies/:movieId" component={MovieDetailsPage} />
       </Switch>
       <Footer />
     </div>

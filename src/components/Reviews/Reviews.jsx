@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-// import s from "../Reviews/Reviews.module.css";
+import s from "../Reviews/Reviews.module.css";
 import Spiner from "../Loader/Loader";
 
 export default function Reviews(props) {
   const [review, setReview] = useState(null);
   const [loader, setLoader] = useState(false);
   const reviewsId = props.match.path.split("/")[2];
-  // console.log(reviewsId);
 
   useEffect(() => {
     setLoader(true);

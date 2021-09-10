@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import BaseImg from "../../img/baseImg.jpg";
 
 export default function MoviePageSearch({ dataMovie, query }) {
-  console.log(999);
   return (
     <ul className={s.list}>
       {dataMovie.map((el) => {

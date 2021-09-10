@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 import ApiFetch from "../API/ApiFetch";
 import Spiner from "../Loader/Loader";
 // import s from "../MoviesPage/MoviesPage.module.css";
-// import { Link, Route } from "react-router-dom";
+import { Route, useLocation } from "react-router-dom";
 // import BaseImg from "../../img/baseImg.jpg";
 import Button from "../Button/Button";
 import MoviePageSearch from "../MoviePageSearch/MoviePageSearch";
+import { exact } from "prop-types";
 const queryString = require("query-string");
 
 export default function MoviesPage(props) {
@@ -15,15 +16,14 @@ export default function MoviesPage(props) {
   // eslint-disable-next-line no-unused-vars
   const [dataMovie, setDataMovie] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [queryNew, setQueryNew] = useState(null);
+  const location = useLocation();
 
   console.log("MoviesPage", props);
-  const parsed = queryString.parse(props.location.search);
-  console.log("parsed.query", parsed.query);
+  let parsed = queryString.parse(location.search);
+  // console.log("parsed.query", parsed.query);
   console.log("parsed", parsed);
-
-  if (query !== null) {
-    console.log(123123);
-  }
+  console.log("location", location);
 
   useEffect(() => {
     if (!query) {
@@ -34,7 +34,13 @@ export default function MoviesPage(props) {
     fetch(query, page);
     props.history.push(`/movies/?query=${query}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
+  }, [query, queryNew]);
+
+  // if (parsed.query && parsed.query === query) {
+  //   console.log(999);
+
+  //   setQueryNew(parsed.query);
+  // }
 
   function fetch(query, page) {
     ApiFetch(query, page).then((movies) => {
@@ -48,14 +54,24 @@ export default function MoviesPage(props) {
 
   const submitForm = (queryForm) => {
     if (query !== queryForm) {
+      console.log(111);
       setQuery(queryForm);
       setPage(1);
       setDataMovie([]);
+      // parsed = {};
     }
     if (query === queryForm) {
       props.history.push(`/movies/?query=${query}`);
     }
   };
+
+  useEffect(() => {
+    if (parsed.query && parsed.query !== query) {
+      // fetch(query, page);
+      // setQueryNew(parsed.query);
+      submitForm(parsed.query);
+    }
+  }, [parsed.query]);
 
   const getNewImg = () => {
     fetch(query, page);
@@ -71,13 +87,15 @@ export default function MoviesPage(props) {
           <Spiner />
         </div>
       )}
-      {/* <Route path={`/movies/?query=`}> */}
+
+      {/* <Route path={`/movies/?query=${query}`} exact>
+        <MoviePageSearch dataMovie={dataMovie} query={query} />
+      </Route> */}
+
       {props.location?.search === `?query=${query}` && (
         <MoviePageSearch dataMovie={dataMovie} query={query} />
       )}
-      {/* <MoviePageSearch dataMovie={dataMovie} query={query} /> */}
-      {/* </Route> */}
-
+      {parsed.query && <MoviePageSearch dataMovie={dataMovie} query={query} />}
       {props.location.pathname !== "/movies" && page > 1 && (
         <Button onClick={getNewImg} text={"Load more"} />
       )}
