@@ -6,10 +6,9 @@ import Spiner from "../Loader/Loader";
 export default function Cast(props) {
   const [cast, setCast] = useState(null);
   const [loader, setLoader] = useState(false);
-  console.log("cast", props);
-  // console.log(props.match.path.split("/")[2]);
+
   const movieId = props?.match?.path?.split("/")[2];
-  // console.log(Router.Consumer);
+
   useEffect(() => {
     setLoader(true);
     fetch(
@@ -31,15 +30,10 @@ export default function Cast(props) {
       });
   }, [movieId]);
 
-  console.log(cast);
   return (
     <div>
       <ul className={s.list}>
-        {loader && (
-          <div style={{ marginLeft: "50%", marginTop: "20px" }}>
-            <Spiner />
-          </div>
-        )}
+        {loader && <Spiner />}
         {cast &&
           cast.cast.map((el) => {
             return (

@@ -100,7 +100,8 @@
   font-weight: 500;
 }
 
-.buttonMod {
+.buttonMod > button {
+  /* margin-right: auto; */
   margin-left: 20px;
   margin-top: 18px;
   margin-bottom: -5px;

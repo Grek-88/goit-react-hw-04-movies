@@ -19,7 +19,7 @@ export default function InputSearch({ onSubmit }) {
       e.target[0].value = "";
       return;
     }
-    // console.log(e.target[0].value);
+
     onSubmit(e.target[0].value);
     e.target[0].value = "";
   };
@@ -33,8 +33,6 @@ export default function InputSearch({ onSubmit }) {
           name="query"
           autoComplete="off"
           placeholder="Search movies..."
-          // required=""
-          // value=""
         />
         <button type="submit"></button>
       </form>

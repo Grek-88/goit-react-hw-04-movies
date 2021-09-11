@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import s from "../Reviews/Reviews.module.css";
+import "../Reviews/Reviews.module.css";
 import Spiner from "../Loader/Loader";
 
 export default function Reviews(props) {
@@ -28,16 +28,10 @@ export default function Reviews(props) {
       });
   }, [reviewsId]);
 
-  console.log("review", review);
-
   return (
     <div>
       <ul>
-        {loader && (
-          <div style={{ marginLeft: "50%", marginTop: "20px" }}>
-            <Spiner />
-          </div>
-        )}
+        {loader && <Spiner />}
         {review?.results.length === 0 && (
           <p>We don't have any reviews for this movie</p>
         )}

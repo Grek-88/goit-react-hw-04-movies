@@ -7,6 +7,7 @@ import Spiner from "../Loader/Loader";
 
 export default function HomePage() {
   const [movieStart, setMovieStart] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
   const [loader, setLoader] = useState(false);
 
@@ -14,23 +15,15 @@ export default function HomePage() {
     setLoader(true);
     ApiFetch()
       .then((moviesData) => {
-        // console.log(moviesData.results);
         setMovieStart([...moviesData.results]);
         setLoader(false);
       })
       .catch((error) => setError(error));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  error && console.log(error);
 
   return (
     <div>
-      {loader && (
-        <div style={{ marginLeft: "50%", marginTop: "20px" }}>
-          <Spiner />
-        </div>
-      )}
+      {loader && <Spiner />}
       <ul className={s.list}>
         {movieStart.map((el) => {
           return (

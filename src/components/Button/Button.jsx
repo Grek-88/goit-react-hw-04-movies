@@ -1,12 +1,8 @@
 import s from "../Button/Button.module.css";
 
-export default function Button({ onClick, text, classMode }) {
+export default function Button({ onClick, text }) {
   return (
-    <button
-      type="button"
-      className={`${s.Button}  ${classMode}`}
-      onClick={onClick}
-    >
+    <button type="button" className={`${s.Button}`} onClick={onClick}>
       {text}
     </button>
   );
