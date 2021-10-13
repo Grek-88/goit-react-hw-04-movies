@@ -26,17 +26,21 @@ const NotFoundPage = lazy(() =>
 
 export default function App() {
   return (
-    <div className="App">
-      <Header />
-      <Suspense fallback={<Spiner />}>
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/movies" exact component={MoviesPage} />
-          <Route path="/movies/:movieId" component={MovieDetailsPage} />
-          <Route component={NotFoundPage} />
-        </Switch>
+    <>
+      <div className="App">
+        <Header />
+        <Suspense fallback={<Spiner />}>
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/movies" exact component={MoviesPage} />
+            <Route path="/movies/:movieId" component={MovieDetailsPage} />
+            <Route component={NotFoundPage} />
+          </Switch>
+        </Suspense>
+      </div>
+      <div className="Footer">
         <Footer />
-      </Suspense>
-    </div>
+      </div>
+    </>
   );
 }

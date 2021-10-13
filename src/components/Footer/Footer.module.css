@@ -1,3 +1,57 @@
-/* footer {
+.footer {
+  margin-bottom: 10px;
+}
 
-} */
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+}
+
+.heart {
+  margin: 0 5px;
+
+  animation: heartbeat 2500ms infinite linear;
+
+  cursor: default;
+}
+
+.link {
+  text-decoration: none;
+  color: currentColor;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link:hover {
+  color: red;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.name {
+  margin-left: 5px;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(0.75);
+  }
+  20% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.75);
+  }
+  60% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(0.75);
+  }
+}

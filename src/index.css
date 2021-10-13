@@ -19,6 +19,17 @@ html,
   width: 100%;
 }
 
+#root {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Footer {
+  margin-top: auto;
+}
+
 img {
   display: block;
   max-width: 100%;

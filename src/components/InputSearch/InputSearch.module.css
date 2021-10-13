@@ -1,6 +1,6 @@
-/* .InputSearch {
-  background: #7ba7ab;
-} */
+.InputSearch {
+  margin-bottom: -10px;
+}
 
 .InputSearch:after {
   content: "";
